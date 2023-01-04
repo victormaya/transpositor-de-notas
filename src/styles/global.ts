@@ -20,11 +20,11 @@ const GlobalStyles = createGlobalStyle`
       height: 0.5rem;
     }
     ::-webkit-scrollbar-track {
-      background: ${theme.colors.mainBg};
+      background: ${theme.colors.green};
     }
 
     ::-webkit-scrollbar-thumb {
-      background: ${theme.colors.primary};
+      background: ${theme.colors.light};
       border-radius: 1rem;
     }
 
