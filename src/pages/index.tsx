@@ -6,18 +6,30 @@ import * as S from 'styles/styles'
 
 export default function Home() {
   const notesList = [
-    'C',
-    'C#',
-    'D',
-    'D#',
-    'E',
-    'F',
-    'F#',
-    'G',
-    'G#',
-    'A',
-    'A#',
-    'B'
+    { note: 'C', minor: false },
+    { note: 'C#', minor: false },
+    { note: 'D', minor: false },
+    { note: 'D#', minor: false },
+    { note: 'E', minor: false },
+    { note: 'F', minor: false },
+    { note: 'F#', minor: false },
+    { note: 'G', minor: false },
+    { note: 'G#', minor: false },
+    { note: 'A', minor: false },
+    { note: 'A#', minor: false },
+    { note: 'B', minor: false },
+    { note: 'Cm', minor: true },
+    { note: 'C#m', minor: true },
+    { note: 'Dm', minor: true },
+    { note: 'D#m', minor: true },
+    { note: 'Em', minor: true },
+    { note: 'Fm', minor: true },
+    { note: 'F#m', minor: true },
+    { note: 'Gm', minor: true },
+    { note: 'G#m', minor: true },
+    { note: 'Am', minor: true },
+    { note: 'A#m', minor: true },
+    { note: 'Bm', minor: true }
   ]
 
   const [selectedIndices, setSelectedIndices] = useState([])
@@ -50,13 +62,23 @@ export default function Home() {
 
   function calcIndex(indice: number) {
     const newIndice = indice + number
-    const action = newIndice >= 0 ? 'plus' : 'less'
-    if (action === 'plus') {
-      const finalIndice = newIndice > 11 ? newIndice - 12 : newIndice
-      return finalIndice
-    } else if (action === 'less') {
-      const finalIndice = newIndice < 0 ? newIndice + 12 : newIndice
-      return finalIndice
+    const action = newIndice >= 0 && newIndice > 11 ? 'plus' : 'less'
+    if (indice <= 11) {
+      if (action === 'plus') {
+        const finalIndice = newIndice > 11 ? newIndice - 12 : newIndice
+        return finalIndice
+      } else if (action === 'less') {
+        const finalIndice = newIndice < 0 ? newIndice + 12 : newIndice
+        return finalIndice
+      }
+    } else {
+      if (action === 'plus') {
+        const finalIndice = newIndice > 23 ? newIndice - 12 : newIndice
+        return finalIndice
+      } else if (action === 'less') {
+        const finalIndice = newIndice < 12 ? newIndice + 12 : newIndice
+        return finalIndice
+      }
     }
   }
 
@@ -72,17 +94,36 @@ export default function Home() {
           <S.Section>
             <S.Text>Escolha as notas para transpor:</S.Text>
             <S.NoteButtonContainer>
-              {notesList.map((note, index) => (
-                <S.NoteButton
-                  onClick={() => addOrRemoveNote(index)}
-                  typeButton={
-                    selectedIndices.includes(index) ? 'selected' : 'default'
-                  }
-                  key={note}
-                >
-                  {note}
-                </S.NoteButton>
-              ))}
+              {notesList.map(
+                (item, index) =>
+                  !item.minor && (
+                    <S.NoteButton
+                      onClick={() => addOrRemoveNote(index)}
+                      typeButton={
+                        selectedIndices.includes(index) ? 'selected' : 'default'
+                      }
+                      key={item.note}
+                    >
+                      {item.note}
+                    </S.NoteButton>
+                  )
+              )}
+            </S.NoteButtonContainer>
+            <S.NoteButtonContainer>
+              {notesList.map(
+                (item, index) =>
+                  item.minor && (
+                    <S.NoteButton
+                      onClick={() => addOrRemoveNote(index)}
+                      typeButton={
+                        selectedIndices.includes(index) ? 'selected' : 'default'
+                      }
+                      key={item.note}
+                    >
+                      {item.note}
+                    </S.NoteButton>
+                  )
+              )}
             </S.NoteButtonContainer>
           </S.Section>
           {selectedIndices.length > 0 && (
@@ -92,7 +133,7 @@ export default function Home() {
                 <S.NoteButtonContainer>
                   {selectedIndices.map((indice) => (
                     <S.NoteButton typeButton="selected" key={indice}>
-                      {notesList[indice]}
+                      {notesList[indice].note}
                     </S.NoteButton>
                   ))}
                 </S.NoteButtonContainer>
@@ -129,7 +170,7 @@ export default function Home() {
                   <S.NoteButtonContainer>
                     {selectedIndices.map((indice) => (
                       <S.NoteButton typeButton="transposed" key={indice}>
-                        {notesList[calcIndex(indice)]}
+                        {notesList[calcIndex(indice)].note}
                       </S.NoteButton>
                     ))}
                   </S.NoteButtonContainer>
