@@ -14,8 +14,10 @@ export const ContainerGrid = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  .logo {
-    transform: scale(0.8);
+  @media (max-width: 768px) {
+    .logo {
+      transform: scale(0.8);
+    }
   }
 `
 export const Section = styled.section`

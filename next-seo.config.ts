@@ -1,29 +1,17 @@
 import { NextSeoProps } from 'next-seo'
 
 export default {
-  titleTemplate: 'Boilerplate | %s',
-  defaultTitle: 'Boilerplate | Boilerplate do Alquipo Neto',
-  description: 'Boilerplate pronto para usar em projetos NEXT',
-  canonical: 'https://github.com/Alquipo/boilerplate',
+  titleTemplate: 'Transpositor de Notas',
+  description:
+    'Ferramenta online para transpor notas musicais de uma tonalidade para outra',
+  canonical: 'a preencher',
   openGraph: {
-    title: 'Boilerplate | Boilerplate do Alquipo Neto',
+    title: 'Transpositor de Notas',
     type: 'website',
-    url: 'https://github.com/Alquipo/boilerplate',
+    url: 'a preencher',
     locale: 'pt_BR',
-    site_name: 'Boilerplate',
-    description: 'Boilerplate pronto para usar em projetos NEXT',
-    images: [
-      {
-        url: '/img/nextjs-logo.svg',
-        alt: 'Boilerplate pronto para usar em projetos NEXT',
-        height: 1200,
-        width: 630
-      }
-    ]
-  },
-  twitter: {
-    handle: '@alquiponeto',
-    site: '@site',
-    cardType: 'summary_large_image'
+    site_name: 'Transpositor de Notas',
+    description:
+      'Ferramenta online para transpor notas musicais de uma tonalidade para outra'
   }
 } as NextSeoProps
