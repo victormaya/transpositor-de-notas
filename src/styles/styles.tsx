@@ -10,10 +10,13 @@ export const ContainerPage = styled.div`
 export const ContainerGrid = styled.div`
   width: ${({ theme }) => theme.grid.container};
   min-height: 100vh;
-  padding: 90px 0;
+  padding: 90px 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  .logo {
+    transform: scale(0.8);
+  }
 `
 export const Section = styled.section`
   display: flex;
@@ -23,11 +26,16 @@ export const Section = styled.section`
   margin-bottom: ${({ theme }) => theme.spacings.large};
 `
 export const Title = styled.h1`
+  text-align: center;
   font-weight: ${({ theme }) => theme.font.bold};
   font-size: ${({ theme }) => theme.font.sizes.xxlarge};
   color: ${({ theme }) => theme.colors.light};
   margin-top: ${({ theme }) => theme.spacings.medium};
   margin-bottom: ${({ theme }) => theme.spacings.xlarge};
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.font.sizes.xlarge};
+    margin-bottom: ${({ theme }) => theme.spacings.large};
+  }
 `
 export const Text = styled.p`
   font-weight: ${({ theme }) => theme.font.normal};
@@ -37,12 +45,22 @@ export const Text = styled.p`
   span {
     font-size: ${({ theme }) => theme.font.sizes.large};
   }
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.font.sizes.large};
+    span {
+      font-size: ${({ theme }) => theme.font.sizes.medium};
+    }
+  }
 `
 export const NoteButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `
 
 const selectBg = {
@@ -69,6 +87,11 @@ export const NoteButton = styled.button<{ typeButton: string }>`
     background: ${({ theme }) => theme.colors.green};
     color: ${({ theme }) => theme.colors.light};
   }
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    font-size: ${({ theme }) => theme.font.sizes.large};
+  }
 `
 
 export const CalcButton = styled.button<{ transparent: boolean }>`
@@ -94,4 +117,7 @@ export const DisplayNumber = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    font-size: ${({ theme }) => theme.font.sizes.large};
+  }
 `

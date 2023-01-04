@@ -65,7 +65,9 @@ export default function Home() {
       <NextSeo title="Transpositor de notas" />
       <S.ContainerPage>
         <S.ContainerGrid>
-          <LogoLarge />
+          <div className="logo">
+            <LogoLarge />
+          </div>
           <S.Title>TRANSPOSITOR DE NOTAS</S.Title>
           <S.Section>
             <S.Text>Escolha as notas para transpor:</S.Text>
