@@ -107,6 +107,12 @@ export const CalcButton = styled.button<{ transparent: boolean }>`
   border: none;
   cursor: pointer;
   opacity: ${(props) => (props.transparent ? 0 : 1)};
+  width: 50px;
+  height: 50px;
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `
 export const DisplayNumber = styled.p`
   width: 50px;
