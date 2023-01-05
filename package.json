@@ -18,7 +18,7 @@
     "lint": "next lint",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "generate": "plop --plopfile generators/plopfile.js",
-    "storybook": "start-storybook -p 6006",
+    "sb": "start-storybook -p 6006",
     "build-storybook": "build-storybook ",
     "serve-storybook": "serve storybook-static"
   },

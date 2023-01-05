@@ -1,6 +1,14 @@
 import { useState } from 'react'
 
-import LogoLarge from 'assets/svgs/LogoLarge'
+import { ContainerGrid } from 'components/ContainerGrid'
+import { ContainerPage } from 'components/ContainerPage'
+import { DefaultSection } from 'components/DefaultSection'
+import Logo from 'components/Logo'
+import { NoteButton } from 'components/NoteButton'
+import { NoteButtonContainer } from 'components/NoteButtonContainer'
+import { SpanText } from 'components/SpanText'
+import { Text } from 'components/Text'
+import { Title } from 'components/Title'
 import { NextSeo } from 'next-seo'
 import * as S from 'styles/styles'
 
@@ -85,19 +93,17 @@ export default function Home() {
   return (
     <>
       <NextSeo title="Transpositor de notas" />
-      <S.ContainerPage>
-        <S.ContainerGrid>
-          <div className="logo">
-            <LogoLarge />
-          </div>
-          <S.Title>TRANSPOSITOR DE NOTAS</S.Title>
-          <S.Section>
-            <S.Text>Escolha as notas para transpor:</S.Text>
-            <S.NoteButtonContainer>
+      <ContainerPage>
+        <ContainerGrid>
+          <Logo />
+          <Title>TRANSPOSITOR DE NOTAS</Title>
+          <DefaultSection>
+            <Text>Escolha as notas para transpor:</Text>
+            <NoteButtonContainer>
               {notesList.map(
                 (item, index) =>
                   !item.minor && (
-                    <S.NoteButton
+                    <NoteButton
                       onClick={() => addOrRemoveNote(index)}
                       typeButton={
                         selectedIndices.includes(index) ? 'selected' : 'default'
@@ -105,15 +111,15 @@ export default function Home() {
                       key={item.note}
                     >
                       {item.note}
-                    </S.NoteButton>
+                    </NoteButton>
                   )
               )}
-            </S.NoteButtonContainer>
-            <S.NoteButtonContainer>
+            </NoteButtonContainer>
+            <NoteButtonContainer>
               {notesList.map(
                 (item, index) =>
                   item.minor && (
-                    <S.NoteButton
+                    <NoteButton
                       onClick={() => addOrRemoveNote(index)}
                       typeButton={
                         selectedIndices.includes(index) ? 'selected' : 'default'
@@ -121,32 +127,29 @@ export default function Home() {
                       key={item.note}
                     >
                       {item.note}
-                    </S.NoteButton>
+                    </NoteButton>
                   )
               )}
-            </S.NoteButtonContainer>
-          </S.Section>
+            </NoteButtonContainer>
+          </DefaultSection>
           {selectedIndices.length > 0 && (
             <>
-              <S.Section>
-                <S.Text>Notas Selecionadas:</S.Text>
-                <S.NoteButtonContainer>
+              <DefaultSection>
+                <Text>Notas Selecionadas:</Text>
+                <NoteButtonContainer>
                   {selectedIndices.map((indice) => (
-                    <S.NoteButton typeButton="selected" key={indice}>
+                    <NoteButton typeButton="selected" key={indice}>
                       {notesList[indice].note}
-                    </S.NoteButton>
+                    </NoteButton>
                   ))}
-                </S.NoteButtonContainer>
-              </S.Section>
-              <S.Section>
-                <S.Text>
-                  Altere o tom para mais ou para menos.
-                  <span>
-                    <br />
-                    Cada unidade adicionada ou subtraída corresponde a meio tom
-                  </span>
-                </S.Text>
-                <S.NoteButtonContainer>
+                </NoteButtonContainer>
+              </DefaultSection>
+              <DefaultSection>
+                <Text>Altere o tom para mais ou para menos.</Text>
+                <SpanText>
+                  Cada unidade adicionada ou subtraída corresponde a meio tom.
+                </SpanText>
+                <NoteButtonContainer>
                   <S.CalcButton
                     onClick={() => changeNumber('less')}
                     transparent={number <= -11}
@@ -162,24 +165,24 @@ export default function Home() {
                   >
                     +
                   </S.CalcButton>
-                </S.NoteButtonContainer>
-              </S.Section>
+                </NoteButtonContainer>
+              </DefaultSection>
               {transposeActive && (
-                <S.Section>
-                  <S.Text>Notas transpostas:</S.Text>
-                  <S.NoteButtonContainer>
+                <DefaultSection>
+                  <Text>Notas transpostas:</Text>
+                  <NoteButtonContainer>
                     {selectedIndices.map((indice) => (
-                      <S.NoteButton typeButton="transposed" key={indice}>
+                      <NoteButton typeButton="transposed" key={indice}>
                         {notesList[calcIndex(indice)].note}
-                      </S.NoteButton>
+                      </NoteButton>
                     ))}
-                  </S.NoteButtonContainer>
-                </S.Section>
+                  </NoteButtonContainer>
+                </DefaultSection>
               )}
             </>
           )}
-        </S.ContainerGrid>
-      </S.ContainerPage>
+        </ContainerGrid>
+      </ContainerPage>
     </>
   )
 }
