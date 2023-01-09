@@ -31,7 +31,8 @@
     "next-seo": "^5.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "ytdl-core": "^4.11.2"
   },
   "devDependencies": {
     "@alquipo/eslint-config": "^1.2.5",

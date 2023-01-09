@@ -30,6 +30,6 @@ export const NoteButton = styled.button<INoteButton>`
   @media (max-width: 768px) {
     width: 40px;
     height: 40px;
-    font-size: ${({ theme }) => theme.font.sizes.large};
+    font-size: ${({ theme }) => theme.font.sizes.small};
   }
 `
